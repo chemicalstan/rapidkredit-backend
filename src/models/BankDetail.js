@@ -1,8 +1,23 @@
 import { Model } from "objection";
+// import { type } from "os";
 
 class BankDetail extends Model {
   static get tableName() {
     return "bank_detail";
+  }
+  
+  static get jsonSchema(){
+    return {
+      type: 'object',
+      required: ['staffId', 'accountName', 'bankName', 'accountNumber'],
+      properties: {
+        id: {type: 'uuid'},
+        staffId: {type: 'uuid'},
+        accountName: {type: 'string', minLength: 1, maxLength: 255},
+        bankName: {type: 'string', minLength: 1, maxLength: 255},
+        accountNumber: {type: 'integer'}
+      }
+    }
   }
 
   static get relationMappings() {
