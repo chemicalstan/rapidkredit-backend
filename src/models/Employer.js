@@ -45,6 +45,9 @@ class Employer extends Model {
           },
           to: "staff.id"
         }
+      },
+      companies: {
+        
       }
     };
   }
