@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src/index.js -d dist",
+    "watch": "babel src -w -d dist --copy-files",
     "start": "npm run build && nodemon dist/index.js"
   },
   "author": "",
