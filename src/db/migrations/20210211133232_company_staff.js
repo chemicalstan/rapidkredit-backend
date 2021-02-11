@@ -1,10 +1,10 @@
 exports.up = async knex => {
-  await knex.schema.createTable("employer_staff", table => {
+  await knex.schema.createTable("company_staff", table => {
     table.uuid("id").primary();
     table
-      .uuid("employer_id")
+      .uuid("company_id")
       .references("id")
-      .inTable("employer")
+      .inTable("company")
       .notNull()
       .onDelete("cascade");
     table
@@ -24,12 +24,7 @@ exports.up = async knex => {
       .integer("days_worked_for")
       .notNullable()
       .defaultTo(0);
-    table
-      .uuid("bank_id")
-      .references("id")
-      .inTable("bank_detail")
-      .notNull()
-      .onDelete("cascade");
+    table.json("bank_details");
     table
       .timestamp("created_at")
       .notNullable()
@@ -43,5 +38,5 @@ exports.up = async knex => {
 };
 
 exports.down = async knex => {
-  return knex.schema.dropTableIfExists("employer_staff");
+  return knex.schema.dropTableIfExists("company_staff");
 };

@@ -31,16 +31,17 @@ class Employer extends Model {
   }
   static get relationMappings() {
     import Staff from "./Staff";
+    import Company from './Company';
     return {
       // Relating employer to their staffs
-      Staffs: {
+      staffs: {
         relation: Model.ManyToManyRelation,
         modelClass: Staff,
         join: {
           from: "employer.id",
           through: {
-            from: "employer_staff.employer_id",
-            to: "employer_staff.staff_id"
+            from: "company.employer_id",
+            to: "company.staff_id"
           },
           to: "staff.id"
         }

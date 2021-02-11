@@ -1,5 +1,4 @@
 import { Model } from "objection";
-import knex from "../knex";
 
 class Staff extends Model {
   static get tableName() {
