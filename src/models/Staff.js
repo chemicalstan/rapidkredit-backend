@@ -5,10 +5,26 @@ class Staff extends Model {
   static get tableName() {
     return "staff";
   }
-
+  static get jsonSchema(){
+    return {
+      type: 'object',
+      required: ['firstName', 'lastName', 'password', 'email', 'phone', 'country'],
+      properties: {
+        id: {type: 'uuid'},
+        firstName: {type: 'string', minLength: 1, maxLength: 255},
+        lastName: {type: 'string', minLength: 1, maxLength: 255},
+        password: {type: 'string', minLength: 1, maxLength: 255},
+        email: {type: 'string', minLength: 1, maxLength: 255},
+        imageUrl: {type: 'string', minLength: 1, maxLength: 255},
+        phone: {type: 'integer'},
+        isActive: {type: 'boolean'},
+        isVerified: {type: 'boolean'},
+        country: {type: 'string'}
+      }
+    }
+  }
   static get relationMappings() {
     import BankDetail from "./BankDetail";
-    import EmployerStaff from "./EmployerStaff";
     import Employer from "./Employer";
     import Request from "./Request";
 
