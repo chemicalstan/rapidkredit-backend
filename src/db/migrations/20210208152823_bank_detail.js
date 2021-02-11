@@ -1,7 +1,7 @@
 exports.up = async knex => {
   await knex.schema.createTable("bank_detail", table => {
     table.uuid("id").primary();
-    table.uuid("staff_id").references('id').inTable('staff').notNull().onDelete('cascade');;
+    table.uuid("staff_id").references('id').inTable('staff').notNullable().onDelete('cascade');;
     table.string("account_name").notNullable();
     table.string("bank_name").notNullable();
     table
