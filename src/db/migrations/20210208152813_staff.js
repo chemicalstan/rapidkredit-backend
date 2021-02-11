@@ -8,7 +8,7 @@ exports.up = async knex => {
       .string("email")
       .unique()
       .notNullable();
-    table.string("image_image_url");
+    table.string("image_url");
     table
       .integer("phone")
       .notNullable()
@@ -21,7 +21,7 @@ exports.up = async knex => {
       .boolean("is_verified")
       .notNullable()
       .defaultTo(false);
-    table.string("country");
+    table.string("country").notNullable();
     table
       .timestamp("created_at")
       .notNullable()
