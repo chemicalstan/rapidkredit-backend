@@ -17,7 +17,7 @@ class Employer extends Model {
       ],
       properties: {
         id: { type: "uuid" },
-        firstName: { type: "string" },
+        firstName: { type: "string", minLength: 1, maxLength: 255 },
         lastName: { type: "string", minLength: 1, maxLength: 255 },
         password: { type: "string", minLength: 1, maxLength: 255 },
         phone: { type: "integer" },
@@ -47,7 +47,7 @@ class Employer extends Model {
         }
       },
       companies: {
-        
+
       }
     };
   }
