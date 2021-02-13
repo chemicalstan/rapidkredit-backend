@@ -34,19 +34,12 @@ exports.up = async knex => {
         .notNullable()
         .defaultTo(false);
       table.string("country").notNullable();
-      table
-        .timestamp("created_at")
-        .notNullable()
-        .defaultTo(knex.fn.now());
-      table
-        .timestamp("updated_at")
-        .notNullable()
-        .defaultTo(knex.fn.now());
+      table.timestamps(true, true);
     });
     return true;
   };
   
   exports.down = knex => {
-    return knex.schema.dropTableIfExists("staff");
+    return knex.schema.dropTableIfExists("users");
   };
   

@@ -11,18 +11,11 @@ exports.up = async knex => {
       .onDelete("cascade");
     table.text("about_company");
     table.json('company_address');
-    table
-      .timestamp("created_at")
-      .notNullable()
-      .defaultTo(knex.fn.now());
-    table
-      .timestamp("updated_at")
-      .notNullable()
-      .defaultTo(knex.fn.now());
+    table.timestamps(true, true);
   });
   return true;
 };
 
 exports.down = async knex => {
-  return knex.schema.dropTableIfExists("company");
+  return knex.schema.dropTableIfExists("companies");
 };
