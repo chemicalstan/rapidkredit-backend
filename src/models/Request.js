@@ -1,14 +1,22 @@
-import { Model } from "objection";
-import { type } from "os";
+const { Model } = require("objection");
 
 class Request extends Model {
   static get tableName() {
-    return "request";
+    return "requests";
+  }
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+    this.update_at = new Date().toISOString();
+  }
+
+  $beforeUpdate() {
+    delete this.created_at;
+    this.updated_at = new Date().toISOString();
   }
   static get jsonSchema() {
     return {
       type: "object",
-      required: ["staffId", "amount", "requestStatus"],
+      required: ["userId", "amount", "requestStatus"],
       properties: {
         id: { type: "uuid" },
         staffId: { type: "uuid" },
@@ -20,16 +28,16 @@ class Request extends Model {
     };
   }
   static get relationMappings() {
-    import Staff from "./Staff";
-    return {
-      relation: Model.BelongsToOneRelation,
-      modelClass: Staff,
-      join: {
-        from: "request.staff_id",
-        to: "staff.id"
-      }
-    };
+    // const Staff = require("./Staff";
+    // return {
+    //   relation: Model.BelongsToOneRelation,
+    //   modelClass: Staff,
+    //   join: {
+    //     from: "request.staff_id",
+    //     to: "staff.id"
+    //   }
+    // };
   }
 }
 
-export default Request;
+module.exports = Request;

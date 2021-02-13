@@ -1,8 +1,17 @@
-import { Model } from "objection";
+const { Model } = require("objection");
 
-class Staff extends Model {
+class User extends Model {
   static get tableName() {
     return "users";
+  }
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+    this.update_at = new Date().toISOString();
+  }
+
+  $beforeUpdate() {
+    delete this.created_at;
+    this.updated_at = new Date().toISOString();
   }
   static get jsonSchema(){
     return {
@@ -26,9 +35,9 @@ class Staff extends Model {
     }
   }
   static get relationMappings() {
-    // import BankDetail from "./BankDetail";
-    // import Employer from "./Employer";
-    // import Request from "./Request";
+    // const BankDetail = require("./BankDetail");
+    // const Employer = require("./Employer");
+    // const Request = require("./Request");
 
     // return {
     //   // Relating a user to his many bank details\
@@ -66,4 +75,4 @@ class Staff extends Model {
   }
 }
 
-export default Staff;
+module.exports = User;

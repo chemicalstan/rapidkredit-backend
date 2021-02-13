@@ -1,8 +1,8 @@
-import {Router} from 'express';
-import authRoutes from './authRoutes';
-import bankDetailRoutes from './bankDetailRoutes';
-import userRoutes from './userRoutes';
-import requestRoutes from './requestRoutes';
+const {Router} = require('express');
+const authRoutes = require('./authRoutes');
+const bankDetailRoutes = require('./bankDetailRoutes');
+const userRoutes = require('./userRoutes');
+const requestRoutes = require('./requestRoutes');
 
 
 const router = Router();
@@ -12,4 +12,4 @@ router.use('/users', userRoutes);
 router.use('/bank-details', bankDetailRoutes);
 router.use('/requests', requestRoutes);
 
-export default router;
+module.exports = router;

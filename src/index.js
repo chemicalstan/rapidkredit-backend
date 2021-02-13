@@ -1,8 +1,8 @@
-import '@babel/polyfill';
-import express from 'express';
-import bodyParser from 'body-parser';
-import dotenv from 'dotenv';
-import router from './routes';
+require('@babel/polyfill');
+const express = require('express');
+const bodyParser = require('body-parser');
+const dotenv = require('dotenv');
+const router = require('./routes/');
 dotenv.config();
 
 const app = express();
@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 
 // Routes definition
-app.use('/api', );
+app.use('/api', router);
 app.listen(process.env.PORT, ()=>{
     console.log(`Application running on port ${process.env.PORT}`);
 })
 
-export default app
+module.exports = app;

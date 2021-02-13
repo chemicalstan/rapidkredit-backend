@@ -1,7 +1,9 @@
 const {Router} = require('express');
 
-const routes = Router();
+const router = Router();
 
-routes.get('/requests', (req, res)=>{
+router.get('/requests', (req, res)=>{
     return res.status(200).json({message: 'Welcome to requests page'})
 })
+
+module.exports = router

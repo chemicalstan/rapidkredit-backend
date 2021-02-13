@@ -5,16 +5,17 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "babel src/index.js -d dist",
-    "watch": "babel src -w -d dist --copy-files",
+    "clean": "rm -rf build && mkdir build",
+    "build": "npm run clean && babel src -d dist --ignore './src/db/migrations/*.js' --copy-files",
+    "watch": "babel src -w -d dist --copy-files --ignore './src/db/migrations/*.js' --copy-files",
     "start": "npm run build && nodemon dist/index.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.12.13",
-    "@babel/core": "^7.12.13",
-    "@babel/preset-env": "^7.12.13",
+    "@babel/cli": "^7.12.16",
+    "@babel/core": "^7.12.16",
+    "@babel/preset-env": "^7.12.16",
     "nodemon": "^2.0.7"
   },
   "dependencies": {

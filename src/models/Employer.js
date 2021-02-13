@@ -1,4 +1,4 @@
-import { Model } from "objection";
+const { Model } = require("objection");
 
 class Employer extends Model {
   static get tableName() {
@@ -30,26 +30,26 @@ class Employer extends Model {
     };
   }
   static get relationMappings() {
-    import Staff from "./Staff";
-    import Company from './Company';
-    return {
-      // Relating employer to their staffs
-      staffs: {
-        relation: Model.ManyToManyRelation,
-        modelClass: Staff,
-        join: {
-          from: "employer.id",
-          through: {
-            from: "company.employer_id",
-            to: "company.staff_id"
-          },
-          to: "staff.id"
-        }
-      },
-      companies: {
+    // const Staff = require("./Staff");
+    // const Company = require('./Company');
+    // return {
+    //   // Relating employer to their staffs
+    //   staffs: {
+    //     relation: Model.ManyToManyRelation,
+    //     modelClass: Staff,
+    //     join: {
+    //       from: "employer.id",
+    //       through: {
+    //         from: "company.employer_id",
+    //         to: "company.staff_id"
+    //       },
+    //       to: "staff.id"
+    //     }
+    //   },
+    //   companies: {
 
-      }
-    };
+    //   }
+    // };
   }
 }
 

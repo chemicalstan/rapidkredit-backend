@@ -1,4 +1,4 @@
-import { status } from './status';
+const status = require('./status');
 /**
  *  Success (200)
  * @param {objObjectect} messageObj message object

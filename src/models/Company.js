@@ -1,28 +1,36 @@
-import { Model } from "objection";
+const { Model } = require("objection");
 
 class Company extends Model {
   static get tableName() {
-    return "company";
+    return "companies";
+  }
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+    this.update_at = new Date().toISOString();
   }
 
+  $beforeUpdate() {
+    delete this.created_at;
+    this.updated_at = new Date().toISOString();
+  }
   static get jsonSchema() {
     return {
       type: "object",
-      required: ['companyName', 'companyEmail', 'employerId', 'companyAddress'],
+      required: ["companyName", "companyEmail", "employerId", "companyAddress"],
       properties: {
-          id: {type: 'uuid'},
-          companyName: {type: 'string', minLength: 1, maxLength: 255 },
-          companyEmail: {type: 'string', minLength: 1, maxLength: 255 },
-          employerId: {type: 'uuid'},
-          aboutCompany: {type: 'text'},
-          companyAddress: {type: 'json'},
+        id: { type: "uuid" },
+        companyName: { type: "string", minLength: 1, maxLength: 255 },
+        companyEmail: { type: "string", minLength: 1, maxLength: 255 },
+        employerId: { type: "uuid" },
+        aboutCompany: { type: "text" },
+        companyAddress: { type: "json" }
       }
-    }
+    };
   }
 
   static get relationMappings() {
-    // import Employer from "./Employer";
-    // import Staff from "./Staff";
+    // import Employer = require("./Employer");
+    // import Staff = require("./Staff";
     // return {
     //     employer: {
     //         relation: Model.BelongsToOneRelation,
@@ -47,3 +55,5 @@ class Company extends Model {
     // }
   }
 }
+
+module.exports = Company;

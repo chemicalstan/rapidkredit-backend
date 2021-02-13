@@ -1,18 +1,25 @@
-import { Model } from "objection";
-// import { type } from "os";
+const { Model } = require("objection");
 
 class BankDetail extends Model {
   static get tableName() {
-    return "bank_detail";
+    return "bank_details";
   }
-  
+  $beforeInsert() {
+    this.created_at = new Date().toISOString();
+    this.update_at = new Date().toISOString();
+  }
+
+  $beforeUpdate() {
+    delete this.created_at;
+    this.updated_at = new Date().toISOString();
+  }
   static get jsonSchema(){
     return {
       type: 'object',
-      required: ['staffId', 'accountName', 'bankName', 'accountNumber'],
+      required: ['userId', 'accountName', 'bankName', 'accountNumber'],
       properties: {
         id: {type: 'uuid'},
-        staffId: {type: 'uuid'},
+        userId: {type: 'uuid'},
         accountName: {type: 'string', minLength: 1, maxLength: 255},
         bankName: {type: 'string', minLength: 1, maxLength: 255},
         accountNumber: {type: 'integer'}
@@ -21,19 +28,19 @@ class BankDetail extends Model {
   }
 
   static get relationMappings() {
-    import Staff from "./Staff";
+    const User = require("./User");
     return {
       // Relating bank details to a staff
       owner: {
         relation: Model.BelongsToOneRelation,
-        modelClass: Staff,
+        modelClass: User,
         join: {
-          from: "bank_detail.staff_id",
-          to: "staff.id"
+          from: "bank_detail.user_id",
+          to: "user.id"
         }
       }
     };
   }
 }
 
-export default BankDetail;
+module.exports = BankDetail;

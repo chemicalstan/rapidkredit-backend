@@ -9,4 +9,4 @@ const status = {
     nocontent: 204
   };
 
-  export default status; 
+module.export =  status; 
