@@ -1,10 +1,14 @@
 require('@babel/polyfill');
+const dotenv = require('dotenv');
+dotenv.config();
 const express = require('express');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
 const router = require('./routes/');
-dotenv.config();
-
+// const knex = require('knex')
+const db = require('./db/knex');
+const {Model, ForeignKeyViolationError, ValidationError} = require('objection');
+// Bind all Models to a knex instance.
+Model.knex(db);
 const app = express();
 
 app.use(bodyParser.json())
