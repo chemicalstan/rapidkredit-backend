@@ -10,7 +10,7 @@ exports.up = async knex => {
         .notNullable();
       table.string("image_url");
       table
-        .integer("phone")
+        .string("phone")
         .notNullable()
         .unique();
       table
