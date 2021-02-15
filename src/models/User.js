@@ -6,7 +6,7 @@ class User extends Model {
   }
   $beforeInsert() {
     this.created_at = new Date().toISOString();
-    this.update_at = new Date().toISOString();
+    this.updated_at = new Date().toISOString();
   }
 
   $beforeUpdate() {
@@ -16,20 +16,20 @@ class User extends Model {
   static get jsonSchema(){
     return {
       type: 'object',
-      required: ['firstName', 'lastName', 'password', 'email', 'phone', 'country'],
+      required: ['first_name', 'last_name', 'password', 'email', 'phone', 'country'],
       properties: {
-        id: {type: 'uuid'},
-        firstName: {type: 'string', minLength: 1, maxLength: 255},
-        lastName: {type: 'string', minLength: 1, maxLength: 255},
+        uuid: {type: 'uuid'},
+        first_name: {type: 'string', minLength: 1, maxLength: 255},
+        last_name: {type: 'string', minLength: 1, maxLength: 255},
         password: {type: 'string', minLength: 1, maxLength: 255},
         email: {type: 'string', minLength: 1, maxLength: 255},
-        imageUrl: {type: 'string', minLength: 1, maxLength: 255},
-        phone: {type: 'integer'},
-        isActive: {type: 'boolean'},
-        isVerified: {type: 'boolean'},
-        isStaff: {type: 'boolean'},
-        isEmployer: {type: 'boolean'},
-        isAdmin: {type: 'boolean'},
+        image_url: {type: 'string', minLength: 1, maxLength: 255},
+        phone: {type: 'string'},
+        is_active: {type: 'boolean'},
+        is_verified: {type: 'boolean'},
+        is_staff: {type: 'boolean'},
+        is_employer: {type: 'boolean'},
+        is_admin: {type: 'boolean'},
         country: {type: 'string'},
       }
     }

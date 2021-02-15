@@ -4,8 +4,6 @@ const {authController} = require('../controllers')
 
 router.post('/login', authController.login)
 
-router.post('/signup', (req, res)=>{
-    return res.status(200).json({message: 'create a user'});
-})
+router.post('/signup', authController.signup)
 
 module.exports =  router;
