@@ -9,4 +9,4 @@ const status = {
     nocontent: 204
   };
 
-module.export =  status; 
+module.exports =  status; 

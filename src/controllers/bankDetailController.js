@@ -1,4 +1,5 @@
 import BankDetail from "../../dist/models/BankDetail";
+import { status } from '../helpers';
 module.exports = class BankDetail {
   /**
    * Add account
@@ -20,7 +21,7 @@ module.exports = class BankDetail {
    * @returns {Object} Bank Detail Objects
    */
   static async getAll(req, res, next) {
-    return res.status(200).send({ message: "get all bank details" });
+    return res.status(status.success).send({ message: "get all bank details" });
   }
   /**
    * Get bank detail by id
