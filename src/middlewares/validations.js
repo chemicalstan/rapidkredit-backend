@@ -1,6 +1,6 @@
 const { status } = require('../helpers');
 const Joi = require("joi");
-const { errorRes } = require("./messages");
+const { errorRes } = require("../helpers/messages");
 
 module.exports = class Validate {
   /**
