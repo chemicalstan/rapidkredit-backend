@@ -1,5 +1,5 @@
 module.exports = {
-    validations: require('./validations'),
+    authentication: require('./authentication'),
     messages: require('./messages'),
     responses: require('./response'),
     status: require('./status')
