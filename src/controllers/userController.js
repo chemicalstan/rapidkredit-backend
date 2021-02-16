@@ -40,8 +40,10 @@ module.exports = class UserConroller {
    * @returns {Object} User Object
    */
   static async update(req, res, next) {
-    return res.status(200).json({message: 'update a user'});
-  }
+    //   const {firstName, lastName, country} = req.body;
+    //   console.log(firstName, lastName, country)
+      return res.status(200).json({message: 'update user by id'});
+    }
   /**
    * Delete user
    * @param {Object} req
@@ -53,19 +55,13 @@ module.exports = class UserConroller {
     return res.status(200).json({message: 'delete a user'});
   }
   /**
-   * Update user
-   * @param {Object} req
-   * @param {Object} res
-   * @param {Object} next
-   * @returns {Object} User Object
-   */
-  static async update(req, res, next) {}
-  /**
    * Upload Image
    * @param {Object} req
    * @param {Object} res
    * @param {Object} next
    * @returns {Object} User Image url
    */
-  static async uploadImage() {}
+  static async uploadImages(req, res, next) {
+    return res.status(200).json({message: 'image updated'});
+  }
 };

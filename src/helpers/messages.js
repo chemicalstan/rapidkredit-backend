@@ -9,7 +9,7 @@ const errorRes = {
   data: null
 };
 
-export default {
+module.exports = {
   successRes,
   errorRes
 };

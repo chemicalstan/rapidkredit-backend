@@ -11,5 +11,13 @@ router.use('/auth', authRoutes);
 router.use('/users', userRoutes);
 router.use('/bank-details', bankDetailRoutes);
 router.use('/requests', requestRoutes);
+router.post('/secure', (req, res)=>{
+    const authHeader = req.header['authorization'];
+    // const authHeader = req.query().token;
+    console.log(authHeader)
+    return res.send({
+        auth: authHeader
+    })
+})
 
 module.exports = router;
