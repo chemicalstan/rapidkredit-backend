@@ -1,21 +1,18 @@
+const { userController } = require('../controllers');
 const {Router} = require('express');
 const router = Router();
 
-router.get('/', (req, res)=>{
-    return res.status(200).json({message: 'get all users from users table'});
-})
+// get all users from users table
+router.get('/', userController.getAll)
 
-router.get('/:userId', (req, res)=>{
-    return res.status(200).json({message: 'get user from users table by id'});
-})
+// get user from users table by id
+router.get('/:userId', userController.getOne)
 
-router.patch('/:userId', (req, res)=>{
-    return res.status(200).json({message: 'update a user'});
-})
+// update a user
+router.patch('/:userId', userController.update)
 
-router.delete('/:userId', (req, res)=>{
-    return res.status(200).json({message: 'delete a user'});
-})
+// delete a user permanently
+router.delete('/:userId', userController.delete)
 
 
 module.exports = router;
